@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom';
+const [query, setQuery] = useState("");
 
+function handleChange(searchvalue) {
+  setQuery(searchvalue.target.value);
+  onSearch(searchvalue.target.value);
+}
 function Header() {
   return (
     <header className="header">
@@ -10,10 +15,11 @@ function Header() {
           <Link to="/favorites" className="nav-link">Favorites</Link>
         </nav>
         <div className="search-container">
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Search movies..."
-            className="search-input"
+            value={query}
+            onChange={handleChange}
           />
           <button className="search-button">Search</button>
         </div>
